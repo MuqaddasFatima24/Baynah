@@ -6,4 +6,3 @@ Pillow
 streamlit-webrtc
 opencv-python
 requests
-sqlite3

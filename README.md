@@ -1,3 +1,4 @@
+
 # 🕊️ Baynah – Shop with Integrity
 
 **Baynah (بَيِّنَة)** means *clarity*, *evidence*, or *truth* in Arabic.  
