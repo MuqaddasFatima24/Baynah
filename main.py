@@ -5,11 +5,11 @@ from database.models import User, Product, NGO
 from logic.scanner import scan_and_check
 from database.auth import AuthManager
 from db_initializer import create_db
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 import stripe
 
-load_dotenv()  # Load .env file
+load_dotenv()
 stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
 
 st.set_page_config(page_title="Baynah – Shop with Integrity", layout="wide")
