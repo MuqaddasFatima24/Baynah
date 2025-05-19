@@ -6,8 +6,12 @@ Pillow
 streamlit-webrtc
 opencv-python
 <<<<<<< HEAD
+<<<<<<< HEAD
 requests
 =======
 requests
 sqlite3
 >>>>>>> e25a5c6 (🚀 Initial commit – Ethical shopping platform Baynah with Palestine-focused impact UI and custom dark theme)
+=======
+requests
+>>>>>>> c43e0f8004954a4ea91a57229c11fb78f481b14e
