@@ -5,4 +5,9 @@ qrcode
 Pillow
 streamlit-webrtc
 opencv-python
+<<<<<<< HEAD
 requests
+=======
+requests
+sqlite3
+>>>>>>> e25a5c6 (🚀 Initial commit – Ethical shopping platform Baynah with Palestine-focused impact UI and custom dark theme)

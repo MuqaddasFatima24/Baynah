@@ -4,7 +4,6 @@
 **Baynah (بَيِّنَة)** means *clarity*, *evidence*, or *truth* in Arabic.  
 This platform empowers you to make clear, conscious choices in a world clouded by misinformation and injustice.
 
----
 
 ## ✨ Why We Created Baynah
 

@@ -5,6 +5,12 @@ from database.models import User, Product, NGO
 from logic.scanner import scan_and_check
 from database.auth import AuthManager
 from db_initializer import create_db
+from dotenv import load_dotenv
+import os
+import stripe
+
+load_dotenv()  # Load .env file
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
 
 st.set_page_config(page_title="Baynah – Shop with Integrity", layout="wide")
 
@@ -222,13 +228,36 @@ elif tab == "🔍 Scan Product":
 elif tab == "🤝 NGOs & Donate":
     st.header("🤝 Verified NGOs Supporting Gaza")
     ngos = ngo_manager.list_ngos()
+
     if ngos:
         for ngo_id, name, website, country, desc in ngos:
             st.subheader(f"{name} ({country})")
             st.markdown(f"🌐 [Website]({website})")
             st.markdown(desc)
+
             if st.button(f"💳 Donate to {name}", key=f"donate_{ngo_id}"):
-                st.success(f"Mock donation processed for {name}. Thank you!")
+                try:
+                    session = stripe.checkout.Session.create(
+                        payment_method_types=['card'],
+                        line_items=[{
+                            'price_data': {
+                                'currency': 'usd',
+                                'product_data': {'name': f"Donation to {name}"},
+                                'unit_amount': 5000,  # $50.00 donation (in cents)
+                            },
+                            'quantity': 1,
+                        }],
+                        mode='payment',
+                        success_url='https://yourdomain.com/success',
+                        cancel_url='https://yourdomain.com/cancel',
+                    )
+                    st.markdown(
+                        f"[👉 Click here to donate securely via Stripe]({session.url})",
+                        unsafe_allow_html=True
+                    )
+                except Exception as e:
+                    st.error(f"⚠️ Error creating payment session: {e}")
+
             st.markdown("---")
     else:
         st.info("No NGOs found in database.")
